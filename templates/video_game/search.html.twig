@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter des jeux vidéos{% endblock %}
+
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h1>Ajouter des jeux vidéo</h1>
+
+    <div class="row mt-5">
+        {{ form_start(form) }}
+        {{ form_row(form.search) }}
+        <button class="btn btn-success" hx-post="/video-game/search/{{ user.id }}" hx-target="#response">{{ button_label|default('Recherche') }}</button>
+        {{ form_end(form) }}
+        <a href="{{ path('app_video_game_add_hour', {'user': user.id}) }}">
+            <button class="btn btn-danger" >{{ button_label|default('Passer') }}</button>
+        </a>
+        <div class="row" id="response"></div>
+    </div>
+{% endblock %}
+
+

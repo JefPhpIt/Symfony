@@ -1,0 +1,16 @@
+<div class="row mt-5" id="response">
+    {% for game in games %}
+        <div class="col-sm-12 col-md-3 mb-5">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ game.background_image }}" style="height: 150px !important;" class="card-img-top img-fluid" alt="{{ game.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.name }}</h5>
+                    <p class="card-text">{{ game.released | date('d/m/Y') }}</p>
+                    <a href="{{ path('app_video_game_add', { 'id': game.id, 'user': user.id }) }}" class="btn btn-primary">Ajouter</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
